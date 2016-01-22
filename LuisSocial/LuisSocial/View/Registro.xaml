@@ -4,13 +4,13 @@
              x:Class="LuisSocial.View.Registro">
   <StackLayout>
     <Label Text="Login"></Label>
-    <Entry Text="{Binding User.Login}"></Entry>
+    <Entry Text="{Binding Usuario.Login}"></Entry>
     <Label Text="Password"></Label>
-    <Entry Text="{Binding User.Password}"></Entry>
+    <Entry Text="{Binding Usuario.Password}"></Entry>
     <Label Text="Nombre"></Label>
-    <Entry Text="{Binding User.Nombre}"></Entry>
+    <Entry Text="{Binding Usuario.Nombre}"></Entry>
     <Label Text="Apellidos"></Label>
-    <Entry Text="{Binding User.Apellidos}"></Entry>
-    <Button Text="" Command="{Binding CmdAlta}"></Button>
+    <Entry Text="{Binding Usuario.Apellidos}"></Entry>
+    <Button Text="Registrar" Command="{Binding CmdAlta}"></Button>
   </StackLayout>
 </ContentPage>

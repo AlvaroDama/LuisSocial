@@ -26,6 +26,7 @@ namespace LuisSocial.ViewModel
 
         private async void RunAlta()
         {
+            Usuario.Foto = "";
             try
             {
                 IsBusy = true;
@@ -38,9 +39,13 @@ namespace LuisSocial.ViewModel
                             (viewModel => { Titulo = "Mis contactos"; });
                     else
                         await new Page().DisplayAlert("Error", "No se puedo dar de alta", "OK");
-                    
+
                 }
 
+            }
+            catch (Exception e)
+            {
+                await new Page().DisplayAlert("Error", e.Message, "OK");
             }
             finally
             {

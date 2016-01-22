@@ -44,6 +44,10 @@ namespace LuisSocial.ViewModel
                 }
                 
             }
+            catch (Exception e)
+            {
+                await new Page().DisplayAlert("Error", e.Message, "OK");
+            }
             finally
             {
                 
