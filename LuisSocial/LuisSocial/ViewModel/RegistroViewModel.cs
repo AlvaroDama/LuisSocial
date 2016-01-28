@@ -39,18 +39,18 @@ namespace LuisSocial.ViewModel
                     if (res != null)
                     {
                         Cadenas.Session["usuario"] = res;
-                        await _navigator.PushAsync<ContactosViewModel>
-                            (viewModel => { viewModel.Titulo = "Mis contactos"; });
+                        await _navigator.PushAsync<PrincipalViewModel>
+                            (viewModel => { viewModel.Titulo = "Inicio"; });
                     }
                     else
-                        await _page.MostrarAlerta("Error", "No se puedo dar de alta", "OK");
+                        await _page.MostrarAlerta("Error", "No se puedo dar de alta", "Aceptar");
 
                 }
 
             }
             catch (Exception e)
             {
-                await _page.MostrarAlerta("Error", e.Message, "OK");
+                await _page.MostrarAlerta("Error", e.Message, "Aceptar");
             }
             finally
             {

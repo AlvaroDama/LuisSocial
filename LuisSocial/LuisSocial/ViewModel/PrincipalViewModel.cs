@@ -28,6 +28,7 @@ namespace LuisSocial.ViewModel
             var data = await _servicio.GetMensajes(yo.Id);
             await _navigator.PushAsync<MisMensajesViewModel>(viewModel =>
             {
+                viewModel.Titulo = "Recibidos";
                 viewModel.Mensajes = new ObservableCollection<MensajeModel>(data);
             });
 
@@ -42,6 +43,7 @@ namespace LuisSocial.ViewModel
             var noamigos = await _servicio.GetContactos(false, yo.Id);
             await _navigator.PushAsync<ContactosViewModel>(viewModel =>
             {
+                viewModel.Titulo = "Mis contactos";
                 viewModel.Amigos = new ObservableCollection<ContactoModel>(amigos);
                 viewModel.NoAmigos = new ObservableCollection<ContactoModel>(noamigos);
             });

@@ -2,8 +2,11 @@
 using Autofac;
 using LuisSocial.Service;
 using LuisSocial.View;
+using LuisSocial.View.Contactos;
+using LuisSocial.View.Mensajes;
 using LuisSocial.ViewModel;
 using LuisSocial.ViewModel.Contactos;
+using LuisSocial.ViewModel.Mensajes;
 using MvvmLibrary.Factorias;
 using MvvmLibrary.Module.Base;
 using Xamarin.Forms;
@@ -21,14 +24,44 @@ namespace LuisSocial.Module
             builder.RegisterType<DialogService>().As<IDialogService>().SingleInstance();
             builder.RegisterType<PageProxy>().As<IPage>().SingleInstance();
 
+            #region General
+
             builder.RegisterType<Login>();
             builder.RegisterType<LoginViewModel>();
+
+            builder.RegisterType<Registro>();
+            builder.RegisterType<RegistroViewModel>();
+
+            builder.RegisterType<Principal>();
+            builder.RegisterType<PrincipalViewModel>();
+
+            #endregion
+
+
+            #region Contactos
+
+            builder.RegisterType<AddContacto>();
+            builder.RegisterType<AddContactoViewModel>();
 
             builder.RegisterType<Contactos>();
             builder.RegisterType<ContactosViewModel>();
 
-            builder.RegisterType<Registro>();
-            builder.RegisterType<RegistroViewModel>();
+            builder.RegisterType<EnviarMensaje>();
+            builder.RegisterType<EnviarMensajeViewModel>();
+
+            #endregion
+
+
+            #region Mensajes
+
+            builder.RegisterType<DetalleMensaje>();
+            builder.RegisterType<DetalleMensajeViewModel>();
+
+            builder.RegisterType<MisMensajes>();
+            builder.RegisterType<MisMensajesViewModel>();
+
+            #endregion
+
 
             //ToDo: Registrar nuevas tuplas <View, ViewModel>
 

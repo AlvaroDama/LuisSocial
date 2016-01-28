@@ -25,6 +25,7 @@ namespace LuisSocial.ViewModel
 
         public LoginViewModel(INavigator navigator, IServicioMovil servicio, IPage page) : base(navigator, servicio, page)
         {
+            base.Titulo = "Red Social";
             _usuario = new UsuarioModel();
             CmdLogin = new Command(RunLogin);
             CmdAlta = new Command(RunRegistro);
@@ -40,10 +41,9 @@ namespace LuisSocial.ViewModel
                 if (us != null)
                 {
                     Cadenas.Session["usuario"] = us;
-                    await _navigator.PushAsync<ContactosViewModel>(viewModel =>
+                    await _navigator.PushAsync<PrincipalViewModel>(viewModel =>
                     {
-                        viewModel.Titulo = "Mis contactos";
-                        //viewModel.Contactos = 
+                        viewModel.Titulo = "Inicio";
                     });
                 }
                 else
@@ -54,7 +54,7 @@ namespace LuisSocial.ViewModel
             }
             catch (Exception e)
             {
-                await _page.MostrarAlerta("Error", e.Message, "OK");
+                await _page.MostrarAlerta("Error", e.Message, "Aceptar");
             }
             finally
             {
@@ -65,7 +65,7 @@ namespace LuisSocial.ViewModel
 
         private async void RunRegistro()
         {
-            await _navigator.PushAsync<RegistroViewModel>(viewModel => { Titulo = "Alta usuario"; });
+            await _navigator.PushAsync<RegistroViewModel>(viewModel => { viewModel.Titulo = "Alta usuario"; });
         }
         
     }

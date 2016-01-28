@@ -13,7 +13,7 @@
              Title="{Binding Titulo}">
   
   <StackLayout>
-    <ListView ItemsSource="{Binding Mensajes}" SelectedItem="{Binding MensajeSeleccionado}">
+    <ListView ItemsSource="{Binding Mensajes}" SelectedItem="{Binding MensajeSeleccionado, Mode=TwoWay}">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>

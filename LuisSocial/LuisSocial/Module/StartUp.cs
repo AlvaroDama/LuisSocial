@@ -1,7 +1,10 @@
 ﻿using Autofac;
 using LuisSocial.View;
+using LuisSocial.View.Contactos;
+using LuisSocial.View.Mensajes;
 using LuisSocial.ViewModel;
 using LuisSocial.ViewModel.Contactos;
+using LuisSocial.ViewModel.Mensajes;
 using MvvmLibrary.Factorias;
 using MvvmLibrary.Module.Base;
 using Xamarin.Forms;
@@ -25,9 +28,36 @@ namespace LuisSocial.Module
 
         protected override void RegisterViews(IViewFactory viewFactory)
         {
+            #region General
+
             viewFactory.Register<LoginViewModel, Login>();
-            viewFactory.Register<ContactosViewModel, Contactos>();
+
             viewFactory.Register<RegistroViewModel, Registro>();
+
+            viewFactory.Register<PrincipalViewModel, Principal>();
+
+            #endregion
+
+
+            #region Contactos
+
+            viewFactory.Register<AddContactoViewModel, AddContacto>();
+
+            viewFactory.Register<ContactosViewModel, Contactos>();
+
+            viewFactory.Register<EnviarMensajeViewModel, EnviarMensaje>();
+
+            #endregion
+
+
+            #region Mensajes
+
+            viewFactory.Register<DetalleMensajeViewModel, DetalleMensaje>();
+
+            viewFactory.Register<MisMensajesViewModel, MisMensajes>();
+
+            #endregion
+
         }
 
         protected override void ConfigureApplication(IContainer container)

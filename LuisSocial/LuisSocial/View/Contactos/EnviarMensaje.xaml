@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LuisSocial.View.Contactos.EnviarMensaje"
+
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewModel1="clr-namespace:LuisSocial.ViewModel.Contactos;assembly=LuisSocial"
+             d:DataContext="{d:DesignInstance viewModel1:EnviarMensajeViewModel}"
+
+             Title="{Binding Titulo}">
+  
+  <StackLayout>
+    <Label Text="Asunto"></Label>
+    <Entry Text="{Binding Mensaje.Asunto}"></Entry>
+    <Label Text="Mensaje"></Label>
+    <Editor Text="{Binding Mensaje.Contenido}"></Editor>
+    <Button Text="Enviar" Command="{Binding CmdEnviar}"></Button>
+    
+  </StackLayout>
+</ContentPage>

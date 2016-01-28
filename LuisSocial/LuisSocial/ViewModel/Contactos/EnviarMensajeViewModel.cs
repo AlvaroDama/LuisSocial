@@ -47,9 +47,10 @@ namespace LuisSocial.ViewModel.Contactos
                 Mensaje.Leido = false;
                 var r = await _servicio.AddMensaje(Mensaje);
                 if (r != null)
-                {
-                    //TODO: Meter el dialogo
-                }
+                    await _page.MostrarAlerta("Exito", "Mensaje enviado", "Aceptar");
+                else
+                    await _page.MostrarAlerta("Error", "No se pudo enviar", "Aceptar");
+                
             }
             finally
             {

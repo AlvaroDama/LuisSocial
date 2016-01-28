@@ -15,10 +15,11 @@ namespace LuisSocial.ViewModel.Mensajes
             get { return _mensajeSeleccionado; }
             set
             {
+                SetProperty(ref _mensajeSeleccionado, value);
+
                 if (value!=null)
                     VerDetallesMensaje();
                 
-                SetProperty(ref _mensajeSeleccionado, value);
             }
         }
 

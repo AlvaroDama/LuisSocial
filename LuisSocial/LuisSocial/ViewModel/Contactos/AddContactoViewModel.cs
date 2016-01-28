@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using ContactosModel.Model;
 using LuisSocial.Service;
@@ -10,19 +11,21 @@ namespace LuisSocial.ViewModel.Contactos
     public class AddContactoViewModel : GeneralViewModel
     {
         private ObservableCollection<ContactoModel> _amigos;
-        public ObservableCollection<ContactoModel> Amigos
-        {
-            get { return _amigos; }
-            set { SetProperty(ref _amigos, value); }
-        }
-
         private ObservableCollection<ContactoModel> _noAmigos;
+
         public ObservableCollection<ContactoModel> NoAmigos
         {
             get { return _noAmigos; }
             set { SetProperty(ref _noAmigos, value); }
         }
 
+        public ObservableCollection<ContactoModel> Amigos
+        {
+            get { return _amigos; }
+            set { SetProperty(ref _amigos, value); }
+        }
+
+        
         public ICommand CmdAdd { get; set; }
 
         public AddContactoViewModel(INavigator navigator, IServicioMovil servicio, IPage page) : base(navigator, servicio, page)
@@ -30,9 +33,32 @@ namespace LuisSocial.ViewModel.Contactos
             CmdAdd = new Command(AddContacto);
         }
 
-        private async void AddContacto()
+        private async void AddContacto(object obj)
         {
-            //TODO
+            var id = int.Parse(obj.ToString());
+            var c = NoAmigos.FirstOrDefault(o => o.IdDestino == id);
+            if (c != null)
+            {
+                var r = await _page.MostrarAlerta
+                    ("Confirmación", "Estás seguro de añadir a " + 
+                       c.NombreCompleto, "Si", "No");
+
+                if (r)
+                {
+                    var ok = await _servicio.AddContacto(c);
+
+                    if (ok != null)
+                    {
+                        await _page.MostrarAlerta("Exito", "Contacto añadido", "Aceptar");
+                        Amigos.Add(c);
+                        NoAmigos.Remove(c);
+                    }
+                    else
+                    {
+                        await _page.MostrarAlerta("Error", "No se puedo añadir", "Aceptar");
+                    }
+                }
+            }
         }
     }
 }

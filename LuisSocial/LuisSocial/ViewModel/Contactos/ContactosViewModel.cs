@@ -10,31 +10,34 @@ namespace LuisSocial.ViewModel.Contactos
     public class ContactosViewModel : GeneralViewModel
     {
         private ObservableCollection<ContactoModel> _amigos;
+        private ObservableCollection<ContactoModel> _noAmigos;
+        private ContactoModel _contactoSeleccionado;
+
+        public ICommand CmdNuevo { get; set; }
+
         public ObservableCollection<ContactoModel> Amigos
         {
             get { return _amigos; }
             set { SetProperty(ref _amigos, value); }
         }
-
-        private ObservableCollection<ContactoModel> _noAmigos;
         public ObservableCollection<ContactoModel> NoAmigos
         {
             get { return _noAmigos; }
             set { SetProperty(ref _noAmigos, value); }
         }
-
-        private ContactoModel _contactoSeleccionado;
         public ContactoModel ContactoSeleccionado
         {
             get { return _contactoSeleccionado; }
             set
             {
-                if (value != null) RunAddMensaje();
                 SetProperty(ref _contactoSeleccionado, value);
+                if (value != null)
+                {
+                   RunAddMensaje();
+                }
             }
         }
-
-        public ICommand CmdNuevo { get; set; }
+        
 
         public ContactosViewModel(INavigator navigator, IServicioMovil servicio, IPage page) : base(navigator, servicio, page)
         {
@@ -45,6 +48,7 @@ namespace LuisSocial.ViewModel.Contactos
         {
             await _navigator.PushAsync<AddContactoViewModel>(viewModel =>
             {
+                viewModel.Titulo = "Agregar amigo";
                 viewModel.Amigos = Amigos;
                 viewModel.NoAmigos = NoAmigos;
             });
@@ -53,6 +57,7 @@ namespace LuisSocial.ViewModel.Contactos
         {
             await _navigator.PushAsync<EnviarMensajeViewModel>(viewModel =>
             {
+                viewModel.Titulo = "Nuevo mensaje";
                 viewModel.Contacto = ContactoSeleccionado;
                 viewModel.Mensaje = new MensajeModel();
             });
