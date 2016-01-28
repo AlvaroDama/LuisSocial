@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using LuisSocial.View;
 using LuisSocial.ViewModel;
+using LuisSocial.ViewModel.Contactos;
 using MvvmLibrary.Factorias;
 using MvvmLibrary.Module.Base;
 using Xamarin.Forms;

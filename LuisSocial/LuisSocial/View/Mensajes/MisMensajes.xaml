@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LuisSocial.View.Mensajes.MisMensajes"
+
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewModel1="clr-namespace:LuisSocial.ViewModel.Mensajes;assembly=LuisSocial"
+             d:DataContext="{d:DesignInstance viewModel1:MisMensajesViewModel}"
+
+             Title="{Binding Titulo}">
+  
+  <StackLayout>
+    <ListView ItemsSource="{Binding Mensajes}" SelectedItem="{Binding MensajeSeleccionado}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout>
+              <Label Text="{Binding Asunto}"></Label>
+              <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding IdOrigen, StringFormat='Enviado por {0}'}"></Label>
+                <Label Text="{Binding Fecha}"></Label>
+                <Label Text="{Binding Leido}"></Label>
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

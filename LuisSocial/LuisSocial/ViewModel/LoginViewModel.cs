@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows.Input;
-using ContactoModel.Model;
+using ContactosModel.Model;
 using LuisSocial.Service;
+using LuisSocial.Util;
+using LuisSocial.ViewModel.Contactos;
 using MvvmLibrary.Factorias;
 using Xamarin.Forms;
 
@@ -21,7 +23,7 @@ namespace LuisSocial.ViewModel
             set { SetProperty(ref _usuario, value); }
         }
 
-        public LoginViewModel(INavigator navigator, IServicioMovil servicio) : base(navigator, servicio)
+        public LoginViewModel(INavigator navigator, IServicioMovil servicio, IPage page) : base(navigator, servicio, page)
         {
             _usuario = new UsuarioModel();
             CmdLogin = new Command(RunLogin);
@@ -36,17 +38,23 @@ namespace LuisSocial.ViewModel
                 var us = await _servicio.ValidarUsuario(Usuario);
 
                 if (us != null)
-                    await _navigator.PushAsync<ContactosViewModel>(viewModel => { Titulo = "Mis contactos"; });
+                {
+                    Cadenas.Session["usuario"] = us;
+                    await _navigator.PushAsync<ContactosViewModel>(viewModel =>
+                    {
+                        viewModel.Titulo = "Mis contactos";
+                        //viewModel.Contactos = 
+                    });
+                }
                 else
                 {
-                    var page = new Page();
-                    await page.DisplayAlert("Error", "No se puede acceder", "Aceptar");
+                    await _page.MostrarAlerta("Error", "No se puede acceder", "Aceptar");
                 }
-                
+
             }
             catch (Exception e)
             {
-                await new Page().DisplayAlert("Error", e.Message, "OK");
+                await _page.MostrarAlerta("Error", e.Message, "OK");
             }
             finally
             {

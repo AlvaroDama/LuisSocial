@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using LuisSocial.Module;
+﻿using LuisSocial.Module;
 using Xamarin.Forms;
 
 namespace LuisSocial

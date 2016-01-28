@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuisSocial", "LuisSocial\Lu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmLibrary", "..\MvvmLibrary\MvvmLibrary\MvvmLibrary.csproj", "{7CD55C5B-4BEB-4F4E-985C-08EB6C7291E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactosModel", "..\ContactosWebAPI\ContactoModel\ContactosModel.csproj", "{948D55D5-5BFB-4BF8-BACD-90B07D8368DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactosModel", "..\ContactosWebAPI\ContactosModel\ContactosModel.csproj", "{948D55D5-5BFB-4BF8-BACD-90B07D8368DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

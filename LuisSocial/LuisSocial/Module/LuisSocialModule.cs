@@ -3,6 +3,8 @@ using Autofac;
 using LuisSocial.Service;
 using LuisSocial.View;
 using LuisSocial.ViewModel;
+using LuisSocial.ViewModel.Contactos;
+using MvvmLibrary.Factorias;
 using MvvmLibrary.Module.Base;
 using Xamarin.Forms;
 
@@ -16,6 +18,8 @@ namespace LuisSocial.Module
             builder.Register<INavigation>(ctx => App.Current.MainPage.Navigation).SingleInstance();
 
             builder.RegisterType<ServicioDatos>().As<IServicioMovil>().SingleInstance();
+            builder.RegisterType<DialogService>().As<IDialogService>().SingleInstance();
+            builder.RegisterType<PageProxy>().As<IPage>().SingleInstance();
 
             builder.RegisterType<Login>();
             builder.RegisterType<LoginViewModel>();
@@ -25,6 +29,8 @@ namespace LuisSocial.Module
 
             builder.RegisterType<Registro>();
             builder.RegisterType<RegistroViewModel>();
+
+            //ToDo: Registrar nuevas tuplas <View, ViewModel>
 
             builder.RegisterInstance<Func<Page>>(() =>
             {

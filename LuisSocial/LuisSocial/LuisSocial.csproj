@@ -42,15 +42,29 @@
     <Compile Include="Service\IServicioMovil.cs" />
     <Compile Include="Service\ServicioDatos.cs" />
     <Compile Include="Util\Cadenas.cs" />
-    <Compile Include="ViewModel\ContactosViewModel.cs" />
+    <Compile Include="ViewModel\Contactos\AddContactoViewModel.cs" />
+    <Compile Include="ViewModel\Contactos\ContactosViewModel.cs" />
+    <Compile Include="ViewModel\Contactos\EnviarMensajeViewModel.cs" />
     <Compile Include="ViewModel\GeneralViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\Mensajes\DetalleMensajeViewModel.cs" />
+    <Compile Include="ViewModel\Mensajes\MisMensajesViewModel.cs" />
+    <Compile Include="ViewModel\PrincipalViewModel.cs" />
     <Compile Include="ViewModel\RegistroViewModel.cs" />
     <Compile Include="View\Contactos.xaml.cs">
       <DependentUpon>Contactos.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Mensajes\DetalleMensaje.xaml.cs">
+      <DependentUpon>DetalleMensaje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Mensajes\MisMensajes.xaml.cs">
+      <DependentUpon>MisMensajes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Principal.xaml.cs">
+      <DependentUpon>Principal.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Registro.xaml.cs">
       <DependentUpon>Registro.xaml</DependentUpon>
@@ -102,7 +116,7 @@
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\ContactosWebAPI\ContactoModel\ContactosModel.csproj">
+    <ProjectReference Include="..\..\..\ContactosWebAPI\ContactosModel\ContactosModel.csproj">
       <Project>{948d55d5-5bfb-4bf8-bacd-90b07d8368dc}</Project>
       <Name>ContactosModel</Name>
     </ProjectReference>
@@ -125,6 +139,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\Contactos.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\Principal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\Mensajes\MisMensajes.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\Mensajes\DetalleMensaje.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
